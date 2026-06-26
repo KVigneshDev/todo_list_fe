@@ -10,12 +10,75 @@
     height: 100%;
   }
 
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+
   body {
-    @apply bg-gradient-to-b from-background to-surface text-content font-sans antialiased;
+    @apply bg-background text-content font-sans antialiased;
+    /* A soft, theme-aware ambient wash so the canvas isn't flat. */
+    background-image:
+      radial-gradient(60rem 60rem at 110% -10%, rgb(var(--accent) / 0.08), transparent 60%),
+      radial-gradient(50rem 50rem at -10% 0%, rgb(var(--accent) / 0.05), transparent 55%);
+    background-attachment: fixed;
   }
 
   /* Consistent, accent-colored focus ring for keyboard users across the app. */
   :focus-visible {
-    @apply outline-none ring-2 ring-accent/40 ring-offset-2 ring-offset-background;
+    @apply outline-none ring-2 ring-accent/50 ring-offset-2 ring-offset-background;
+  }
+
+  /* Tame the native date-picker indicator so it follows the theme. */
+  .dark input[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(0.75);
+  }
+
+  /* Slim, unobtrusive scrollbars that match the surface. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--border-strong)) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    @apply rounded-full border-[3px] border-solid border-transparent bg-clip-content;
+    background-color: rgb(var(--border-strong));
+  }
+}
+
+@layer utilities {
+  /* Animated gradient text used for the brand wordmark. */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      120deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-hover)) 50%,
+      rgb(var(--accent))
+    );
+  }
+
+  /* Skeleton shimmer sweep. */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgb(var(--content) / 0.05),
+      transparent
+    );
+    animation: shimmer 1.6s infinite;
   }
 }

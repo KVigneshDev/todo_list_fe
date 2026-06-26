@@ -47,3 +47,11 @@ export interface UpdateTaskInput {
 
 /** Which tasks the user is currently viewing. */
 export type TaskFilter = 'all' | 'active' | 'completed';
+
+/** Result ordering. Mirrors the backend's `SortOption` enum. */
+export type TaskSort =
+  | 'created_desc'
+  | 'created_asc'
+  | 'title_asc'
+  | 'priority'
+  | 'due_date';

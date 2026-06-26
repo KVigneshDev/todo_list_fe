@@ -17,10 +17,10 @@ interface TaskListProps {
 function ListSkeleton() {
   return (
     <ul className="space-y-2" aria-hidden>
-      {Array.from({ length: 3 }).map((_, index) => (
+      {Array.from({ length: 4 }).map((_, index) => (
         <li
           key={index}
-          className="h-[52px] animate-pulse rounded-lg border border-border bg-surface-muted"
+          className="shimmer h-[58px] rounded-xl border border-border bg-surface"
         />
       ))}
     </ul>
@@ -40,7 +40,7 @@ export function TaskList({
 
   if (query.isError) {
     return (
-      <div className="flex flex-col items-center gap-3 rounded-lg border border-border bg-surface px-6 py-12 text-center">
+      <div className="flex flex-col items-center gap-3 rounded-2xl border border-danger/30 bg-danger-soft px-6 py-12 text-center">
         <p className="text-sm text-content-secondary">
           {query.error.message || 'Could not load tasks.'}
         </p>

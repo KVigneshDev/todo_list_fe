@@ -9,7 +9,7 @@ interface CheckboxProps {
   disabled?: boolean;
 }
 
-/** Round, accent-filled completion toggle. */
+/** Round, accent-filled completion toggle with a little pop on check. */
 export function Checkbox({ checked, onChange, label, disabled }: CheckboxProps) {
   return (
     <button
@@ -20,11 +20,11 @@ export function Checkbox({ checked, onChange, label, disabled }: CheckboxProps) 
       disabled={disabled}
       onClick={onChange}
       className={cn(
-        'flex h-5 w-5 shrink-0 items-center justify-center rounded-full border transition-colors',
-        'disabled:cursor-not-allowed disabled:opacity-50',
+        'flex h-5 w-5 shrink-0 items-center justify-center rounded-full border transition-all duration-150',
+        'active:scale-90 disabled:cursor-not-allowed disabled:opacity-50',
         checked
-          ? 'border-accent bg-accent text-accent-contrast'
-          : 'border-border-strong bg-surface text-transparent hover:border-accent',
+          ? 'animate-pop border-accent bg-accent text-accent-contrast'
+          : 'border-border-strong bg-surface text-transparent hover:border-accent hover:bg-accent-soft',
       )}
     >
       <CheckIcon className="h-3 w-3" strokeWidth={3} />

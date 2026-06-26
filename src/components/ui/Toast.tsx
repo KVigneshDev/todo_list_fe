@@ -19,7 +19,7 @@ export function Toast({ message, onClose, duration = 4000 }: ToastProps) {
   return (
     <div
       role="status"
-      className="fixed inset-x-0 bottom-6 z-50 mx-auto flex w-fit max-w-[90%] items-center gap-3 rounded-md bg-content px-4 py-2.5 text-sm text-content-inverted shadow-pop animate-fade-in-up"
+      className="fixed inset-x-0 bottom-6 z-50 mx-auto flex w-fit max-w-[90%] items-center gap-3 rounded-xl border border-border bg-content px-4 py-2.5 text-sm text-content-inverted shadow-pop animate-fade-in-up"
     >
       <span>{message}</span>
       <button

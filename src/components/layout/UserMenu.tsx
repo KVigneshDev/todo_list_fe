@@ -39,7 +39,7 @@ export function UserMenu() {
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label="Account menu"
-        className="flex h-8 w-8 items-center justify-center rounded-full bg-accent-soft text-xs font-semibold text-accent transition-colors hover:bg-accent/15"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-accent to-accent-hover text-xs font-semibold text-accent-contrast shadow-sm transition-transform hover:scale-105"
       >
         {initials}
       </button>
@@ -47,7 +47,7 @@ export function UserMenu() {
       {open && (
         <div
           role="menu"
-          className="absolute right-0 mt-2 w-56 overflow-hidden rounded-lg border border-border bg-surface shadow-pop animate-fade-in-up"
+          className="absolute right-0 mt-2 w-56 overflow-hidden rounded-xl border border-border bg-surface shadow-pop animate-scale-in"
         >
           <div className="border-b border-border px-3 py-2.5">
             <p className="text-xs text-content-muted">Signed in as</p>

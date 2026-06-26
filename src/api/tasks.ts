@@ -6,6 +6,7 @@ import type {
   Task,
   TaskFilter,
   TaskListResponse,
+  TaskSort,
   TaskStats,
   UpdateTaskInput,
 } from '@/types/task';
@@ -15,6 +16,7 @@ const TASKS_PATH = '/api/v1/tasks';
 export interface ListTasksParams {
   filter?: TaskFilter;
   search?: string;
+  sort?: TaskSort;
   limit?: number;
   offset?: number;
 }
@@ -28,6 +30,8 @@ function buildListQuery(params: ListTasksParams): string {
 
   const search = params.search?.trim();
   if (search) query.set('search', search);
+
+  if (params.sort) query.set('sort', params.sort);
 
   query.set('limit', String(params.limit ?? 50));
   query.set('offset', String(params.offset ?? 0));
